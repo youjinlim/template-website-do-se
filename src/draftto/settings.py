@@ -26,6 +26,7 @@ SECRET_KEY = 'x8_g%t@huk!-e85dw@*e0j@6ce=c1cvm@eft_390jk*_2yb4*v'
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    "eb-site-draftto-draftto.us-west-1.elasticbeanstalk.com",
     "localhost",
     "127.0.0.1",
 ]
