@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'general'
+    'general',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -135,4 +136,39 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
+
+# [AWS BOTO3 SETTINGS]
+# https://www.caktusgroup.com/blog/2014/11/10/Using-Amazon-S3-to-store-
+# your-Django-sites-static-and-media-files/
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+}
+
+AWS_STORAGE_BUCKET_NAME = 's3-draftto-usw1'
+AWS_S3_REGION_NAME = 'us-west-1'  # e.g. us-east-2
+AWS_ACCESS_KEY_ID = 'AKIAISLQ2BYSHHNT3DOA'
+AWS_SECRET_ACCESS_KEY = 'HlwyjMNa8O87APV9pvD39cKEJ+ztPIsFKfMlTHWC'
+
+# Tell django-storages the domain to use to refer to static files.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+# Tell the staticfiles app to use S3Boto3 storage when writing the collected static files (when
+# you run `collectstatic`).
+# Staticfiles
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+# Mediafiles
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+# Mediafiles (Private)
+AWS_PRIVATE_MEDIA_LOCATION = 'media/private'
+PRIVATE_FILE_STORAGE = 'disrupt.storage_backends.PrivateMediaStorage'
+
+"""
+BOOTSTRAP STYLES
+https://www.agriya.com/blog/15-alternatives-bootstrap-foundation-skeleton/
+"""
+# https://materializecss.com/sidenav.html#! (Side Nav is the bomb!)
+# getbootstrap.com
