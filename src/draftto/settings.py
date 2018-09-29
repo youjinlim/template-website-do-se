@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+from .ideas import (
+    SECRET_KEY,
+    AWS_STORAGE_BUCKET_NAME,
+    AWS_S3_REGION_NAME,
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY
+)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x8_g%t@huk!-e85dw@*e0j@6ce=c1cvm@eft_390jk*_2yb4*v'
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -146,10 +154,10 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=94608000',
 }
 
-AWS_STORAGE_BUCKET_NAME = 's3-draftto-usw1'
-AWS_S3_REGION_NAME = 'us-west-1'  # e.g. us-east-2
-AWS_ACCESS_KEY_ID = 'AKIAISLQ2BYSHHNT3DOA'
-AWS_SECRET_ACCESS_KEY = 'HlwyjMNa8O87APV9pvD39cKEJ+ztPIsFKfMlTHWC'
+AWS_STORAGE_BUCKET_NAME = AWS_STORAGE_BUCKET_NAME
+AWS_S3_REGION_NAME = AWS_S3_REGION_NAME  # e.g. us-east-2
+AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY
 
 # Tell django-storages the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
